@@ -1,5 +1,5 @@
 {
-  "homepage": "https://M7mdKady14.github.io/hussien-portfolio",
+  "homepage": "https://M7mdKady14.github.io/hussien-portfolio/",
   "name": "hussien-portfolio",
   "private": true,
   "version": "0.0.0",
@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@fontsource-variable/geist": "^5.2.9",
