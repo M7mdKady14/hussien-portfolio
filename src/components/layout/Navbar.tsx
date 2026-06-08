@@ -1,10 +1,17 @@
 import { useState, useEffect } from "react";
 import { Moon, Sun, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { useTheme } from "./ThemeProvider";
 import { navLinks, personalInfo } from "@/data";
 import { cn } from "@/lib/utils";
+import { NavLink } from "react-router";
 
 export function Navbar() {
   const { theme, setTheme } = useTheme();
@@ -23,43 +30,62 @@ export function Navbar() {
     <header
       className={cn(
         "fixed top-0 z-50 w-full transition-all duration-300",
-        scrolled ? "border-b bg-background/80 backdrop-blur-md" : "bg-transparent"
+        scrolled
+          ? "border-b bg-background/80 backdrop-blur-md"
+          : "bg-transparent",
       )}
     >
       <nav className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo / Name */}
-        <a href="#" className="text-lg font-semibold tracking-tight">
+        <NavLink to="/" className="text-lg font-semibold tracking-tight">
           {personalInfo.name}
-        </a>
+        </NavLink>
 
         {/* Desktop Links */}
         <ul className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <a
-                href={link.href}
+              <NavLink
+                to={link.href}
                 className="text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
                 {link.label}
-              </a>
+              </NavLink>
             </li>
           ))}
         </ul>
 
         {/* Right controls */}
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon" onClick={toggleTheme} aria-label="Toggle theme">
-            {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+          >
+            {theme === "dark" ? (
+              <Sun className="h-4 w-4" />
+            ) : (
+              <Moon className="h-4 w-4" />
+            )}
           </Button>
 
           {/* Mobile menu */}
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden" aria-label="Open menu">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="md:hidden"
+                aria-label="Open menu"
+              >
                 <Menu className="h-4 w-4" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-64">
+            <SheetContent side="right" className="w-64 p-4">
+              <SheetHeader>
+                <SheetTitle>Navigation</SheetTitle>
+              </SheetHeader>
               <nav className="mt-8 flex flex-col gap-4">
                 {navLinks.map((link) => (
                   <a

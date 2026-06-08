@@ -12,8 +12,16 @@ export const personalInfo = {
 
 export const socialLinks: SocialLink[] = [
   { label: "GitHub", url: "https://github.com/yourusername", icon: "Github" },
-  { label: "LinkedIn", url: "https://linkedin.com/in/yourusername", icon: "Linkedin" },
-  { label: "Twitter", url: "https://twitter.com/yourusername", icon: "Twitter" },
+  {
+    label: "LinkedIn",
+    url: "https://linkedin.com/in/yourusername",
+    icon: "Linkedin",
+  },
+  {
+    label: "Twitter",
+    url: "https://twitter.com/yourusername",
+    icon: "Twitter",
+  },
 ];
 
 export const projects: Project[] = [
@@ -21,7 +29,8 @@ export const projects: Project[] = [
     id: "project-1",
     title: "Project One",
     description: "A short one-liner about what this project does.",
-    longDescription: "A longer description that appears in the modal/expanded view.",
+    longDescription:
+      "A longer description that appears in the modal/expanded view.",
     tags: ["React", "TypeScript", "Node.js"],
     githubUrl: "https://github.com/yourusername/project-one",
     liveUrl: "https://project-one.vercel.app",
@@ -61,8 +70,8 @@ export const skills: Skill[] = [
 ];
 
 export const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", href: "/" },
+  { label: "Projects", href: "projects" },
+  { label: "Skills", href: "skills" },
+  { label: "Contact", href: "contact" },
 ];

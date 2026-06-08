@@ -1,26 +1,29 @@
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { Hero } from "@/components/sections/Hero";
-import { About } from "@/components/sections/About";
-import { Projects } from "@/components/sections/Projects";
-import { Skills } from "@/components/sections/Skills";
-import { Contact } from "@/components/sections/Contact";
+import { Home } from "@/pages/Home";
+import { Projects } from "@/pages/Projects";
+import { Skills } from "@/pages/Skills";
+import { Contact } from "@/pages/Contact";
+import { BrowserRouter, Routes, Route } from "react-router";
 
 function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="portfolio-theme">
-      <div className="min-h-screen bg-background text-foreground">
-        <Navbar />
-        <main>
-          <Hero />
-          <About />
-          <Projects />
-          <Skills />
-          <Contact />
-        </main>
-        <Footer />
-      </div>
+      <BrowserRouter>
+        <div className="min-h-screen bg-background text-foreground">
+          <Navbar />
+          <main>
+            <Routes>
+              <Route index element={<Home />} />
+              <Route path="projects" element={<Projects />} />
+              <Route path="skills" element={<Skills />} />
+              <Route path="contact" element={<Contact />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }
